@@ -2,8 +2,20 @@ name: GameCI Template 🎮
 
 on: [push, pull_request]
 
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
 jobs:
+  checkLicense:
+    name: Check for the Unity license ☑️
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail - No license ☠️
+        if: ${{ !startsWith(env.UNITY_LICENSE, '<') }}
+        run: exit 1
+
   testAllModes:
+    needs: checkLicense
     name: Test in ${{ matrix.testMode }}
     runs-on: ubuntu-latest
     strategy:
