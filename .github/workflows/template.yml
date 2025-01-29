@@ -212,8 +212,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: Test Tag
-          release_name: Test Release
+          tag_name: TestTag
+          release_name: TestRelease
           body: |
             🎉 **Release Notes**
             - Unity WebGL build uploaded as part of this release.
