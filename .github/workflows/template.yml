@@ -76,6 +76,8 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+      - name: Remove All .mov Files
+        run: find Assets -type f -name "*.mov" -delete
       - uses: actions/cache@v4
         with:
           path: Library
@@ -115,6 +117,8 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+      - name: Remove All .mov Files
+        run: find Assets -type f -name "*.mov" -delete
       - uses: actions/cache@v4
         with:
           path: Library
@@ -154,6 +158,8 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+      - name: Remove All .mov Files
+        run: find Assets -type f -name "*.mov" -delete
       - uses: actions/cache@v4
         with:
           path: Library
