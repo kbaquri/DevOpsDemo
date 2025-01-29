@@ -214,12 +214,15 @@ jobs:
           zip -r WebGL-Build.zip WebGL
       - name: Verify Zip File
         run: ls -l build
+      - name: Generate Tag Name
+        id: tag_name
+        run: echo "TAG_NAME=v1.0.${{ github.run_id }}" >> $GITHUB_ENV
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
         with:
           tag_name: TestTag
-          release_name: TestRelease
+          release_name: Release ${{ env.TAG_NAME }}
           body: |
             🎉 **Release Notes**
             - Unity WebGL build uploaded as part of this release.
