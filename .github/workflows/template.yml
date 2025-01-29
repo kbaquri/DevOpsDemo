@@ -1,4 +1,4 @@
-name: GameCI Template 🎮
+name: UnityCI Template 🎮
 
 on: [push, pull_request]
 
@@ -6,6 +6,26 @@ env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
+  publishRelease:
+    name: Publish Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name}}
+          body: 
+          🎉 **Release Notes**
+          - Unity WebGL build uploaded as part of this release.
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   checkLicense:
     name: Check for the Unity license ☑️
     runs-on: ubuntu-latest
