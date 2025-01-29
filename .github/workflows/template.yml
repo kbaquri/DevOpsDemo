@@ -208,6 +208,10 @@ jobs:
         with:
           name: Build-WebGL
           path: build/WebGL
+      - name: Zip WebGL Build
+        run: |
+          cd build
+          zip -r WebGL-Build.zip WebGL
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
@@ -225,6 +229,6 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build/WebGL
+          asset_path: build/WebGL-Build.Zip
           asset_name: WebGL-Build.zip
           asset_content_type: application/zip
