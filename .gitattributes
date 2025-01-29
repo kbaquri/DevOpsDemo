@@ -137,3 +137,6 @@
 *.gz lfs-file
 *.rar lfs-file
 *.tar lfs-file
+
+* text=auto
+* -text
