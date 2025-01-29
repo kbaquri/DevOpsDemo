@@ -18,8 +18,7 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           release_name: Release ${{ github.ref_name}}
-          body: 
-          🎉 **Release Notes**
+          body: 🎉 **Release Notes**
           - Unity WebGL build uploaded as part of this release.
           draft: false
           prerelease: false
